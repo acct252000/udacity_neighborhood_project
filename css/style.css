@@ -1,0 +1,201 @@
+* {
+  box-sizing: border-box;
+}
+
+
+ul {
+    list-style-type: none;
+    list-style-position: inside;
+    padding: 0;
+    background-color: #7d97ad;
+    display:flex;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.skatelink {
+    color: #FFF;
+    padding: 8px 0;
+    text-decoration: none;
+    display:flex;
+
+    z-index: 1;
+   
+}
+
+h4 {
+  text-decoration: underline;
+}
+
+
+.filter-form {
+  display: flex;
+  flex-direction: column;
+
+   
+}
+
+.filter-button {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 4px;
+  margin: 4px;
+
+}
+
+
+#navbar {
+    height: 100%; 
+    background-color: #7d97ad; 
+    padding: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.5s; 
+    display: flex;
+    width: 10%;
+    flex-direction: column;
+    color: #fff;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+    display: flex;
+     flex-direction: row;
+}
+
+
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  align-content: space-between;
+ flex-direction: row;
+ 
+}
+
+.row-header {
+  text-align: center;
+  color: #7d97ad;
+  font-weight: bold;
+  font-size: 200%;
+  margin-top: 18px;
+  margin-left: 8px;
+  margin-bottom: 13px;
+  
+}
+
+.row {
+ display: flex;
+ width: 100%;
+
+}
+
+.col-12, .col-6, .col-4 {
+  position: relative;
+  min-height: 1px;
+  float: left;
+
+}
+
+.col-12 {
+
+  width: 100%;
+}
+
+.main-title {
+
+  width: 69%;
+  display: flex;
+}
+
+.hamburger {
+
+  width: 75px;
+  display: none;
+  height: 75px;
+
+}
+
+.wuattribution {
+  width: 31%;
+  display: flex;
+  flex-wrap: wrap;
+
+
+}
+
+#wulogo {
+  
+ width: 125px;
+ height: 80px;
+}
+
+#map {
+ height: 100%
+}
+
+#hidemenuarrow {
+  width: 35px;
+  height: 35px;
+  display: none;
+
+}
+
+.navcontainer{
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-content: space-between;
+  flex-direction: row;
+
+
+}
+
+@media screen and (max-width: 1050px) {
+
+
+#navbar {
+
+    padding: 7px;
+    font-size: 12px;
+    font-weight: normal;
+
+}
+   
+}
+
+
+@media screen and (max-width: 850px) {
+
+
+#navbar {
+
+    display: none;
+
+}
+
+.hamburger {
+
+display: flex;
+}
+
+
+   
+}
+
+
+
+
+
+
+
+
+

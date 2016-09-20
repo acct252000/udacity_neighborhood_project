@@ -1,0 +1,68 @@
+<html>
+ <head>
+ <link href="css/style.css" rel="stylesheet">
+ 
+  <meta charset="UTF-8">
+    <title>Dallas Area Skating Trails</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+ </head>
+ <body>
+
+<div class="navcontainer row">
+
+<div id="navbar">
+
+<ul data-bind="foreach: skateList" class-"allskatelinks" id="myskatelinks">
+<li class="skatelink" data-bind="text: trailName, click: $parent.clickSkate, event: { mouseover: $parent.flyOverAnimate, mouseout: $parent.flyOutAnimate }"></li>
+</ul>
+
+
+
+
+<form class="filter-form">
+<h4>Filter by:</h4>
+Maximum Miles:
+<input type="text" name="maximum miles" data-bind="textInput: maxMiles"/>&nbsp;&nbsp;
+Minimum Miles:
+<input type="text" name="minimum miles" data-bind="textInput: minMiles"/>
+</form>
+
+<button class="filter-button" data-bind="click: filterResults">Filter</button>
+<button class="filter-button" data-bind="click: unFilterResults">Remove Filter</button>
+<div data-bind="text: formValidation"></div>
+<img id="hidemenuarrow" src="img/white_arrow.png" data-bind="click: hideMenu" alt="hide menu arrow">
+</div>
+
+ <div id="main" class= "container"> 
+<header class="row">
+<img class="hamburger" src="img/hamburger_icon.png" alt="menu icon" data-bind="click: showMenu">
+<div class="row-header main-title">Skating Trails in Dallas Area
+</div>
+<div class="wuattribution">
+<div data-bind="text: weatherAttribString"></div>
+<img id="wulogo" src="img/wundergroundlogo_4c.png" alt="Weather Underground Logo"> 
+</div>
+</header>
+
+   <div id="map" class = "row col-12"></div>
+
+</div>
+</div>
+
+   <script> 
+     
+   </script>
+
+    
+<script defer async
+       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkzEV_2vZYplUr-ceO0gt7F0q5y_k5eX8&v=3&callback=initMap">
+   </script>   
+  
+<script src="js/knockout.js"></script>
+     <script src="js/main.js"></script>
+
+  <script src="js/jquery.min.js"></script>
+  <script async defer src="js/weatherapi.js"></script>
+
+ </body>
+</html>
