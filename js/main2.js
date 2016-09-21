@@ -100,7 +100,7 @@ var weatherAttribString;
 var shouldShowLogo;
 
 //viewModel section using knockoutjs
-var ViewModel = function() {
+/*var ViewModel = function() {
 
     var self = this;
 
@@ -108,7 +108,6 @@ var ViewModel = function() {
     this.skateList = ko.observableArray([]);
     this.minMiles = ko.observable(0);
     this.maxMiles = ko.observable(1000);
-    this.filter = ko.observable('');
     this.formValidation = ko.observable('');
     weatherAttribString = ko.observable("Weather information provided by:");
     shouldShowLogo = ko.observable(true);
@@ -126,6 +125,7 @@ var ViewModel = function() {
 
     /*validate form input and filter skates by minimum and maximum miles input, passing in input from website
     for minimum and maximum miles*/
+        /*
     self.filterResults = function() {
         var minNo = Number(this.minMiles());
         var maxNo = Number(this.maxMiles());
@@ -158,18 +158,6 @@ var ViewModel = function() {
             self.skateList.push(skate);
         });
     };
-
-    self.filteredSkates = ko.computed(function() {
-    var filter = this.filter().toLowerCase();
-    if (!filter) {
-        return this.skateList();
-    } else {
-        return ko.utils.arrayFilter(this.skateList(), function(skate) {
-            return skate.trailName.toLowerCase().indexOf(filter) !== -1;
-            console.log("filter function called");
-        });
-    }
-    }, self);
     //show navigation menu
     self.showMenu = function() {
         view.showNavBar();
@@ -181,7 +169,7 @@ var ViewModel = function() {
 
 
 };
-
+*/
 var map;
 
 
@@ -226,7 +214,7 @@ function initMap() {
     clearTimeout(mapsTimeout);
 
 }
-
+/*
 //intialize with knockout
 ko.applyBindings(new ViewModel());
 
@@ -276,6 +264,7 @@ var view = {
     },
     /*shows the infoWindow based on the passed in marker and infoWindow; called upoon click
     allows for closing the infoWindo when close button is clicked*/
+    /*
     showInfoWindow: function(marker, infoWindow) {
 
 
@@ -304,7 +293,7 @@ var view = {
         if (infoWindow.marker != marker) {
             infoWindow.marker = marker;
             //infoWindow.setContent('<h5>' + marker.title + '</h5>');
-            infoWindow.setContent('<b>' + marker.title + '</b><br>Length: ' +  skateLength + 'miles<br>' + htmlWindowString);
+            infoWindow.setContent('<h5>' + marker.title + '</h5>' + htmlWindowString + 'Skate length is ' + skateLength + ' miles.</p>');
             infoWindow.open(map, marker);
 
             infoWindow.addListener('closeclick', function() {
@@ -320,26 +309,26 @@ var view = {
 
     /*This function takes the current weather information for the marker or list item clicked, which will be null if not populated by apiscripts,
     and generates an html string for those that are not none to be displayed in the infoWindow*/
-
+/*
     generateHtmlString: function(currentTemp, currentWindMph, currentWindDir, currentRelativeHumidity) {
 
         var currentTempString = '';
         var currentWindMphString = '';
         var currentWindDirString = '';
         var currentRelativeHumidityString = '';
-        var htmlString = '';
+        var htmlString = '<p>';
 
         if (currentTemp) {
-            currentTempString =  currentTemp + '<br>';
+            currentTempString = 'Current temperature is ' + currentTemp + '<br>';
         }
         if (currentWindMph) {
-            currentWindMphString = 'Wind ' + currentWindMph + ' MPH ';
+            currentWindMphString = 'Current windspeed is ' + currentWindMph + '<br>';
         }
         if (currentWindDir) {
-            currentWindDirString = currentWindDir + '<br>';
+            currentWindDirString = 'Current wind direction is ' + currentWindDir + '<br>';
         }
         if (currentRelativeHumidity) {
-            currentRelativeHumidityString =  'Humidity: ' + currentRelativeHumidity + '<br>';
+            currentRelativeHumidityString = 'Relative humidity is ' + currentRelativeHumidity + '<br>';
         }
 
         return htmlString.concat(currentTempString, currentWindMphString, currentWindDirString, currentRelativeHumidityString);
@@ -349,4 +338,4 @@ var view = {
 
 
 
-};
+};*/

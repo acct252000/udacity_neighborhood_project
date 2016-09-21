@@ -6,7 +6,8 @@
 
     <meta charset="UTF-8">
     <title>Dallas Area Skating Trails</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
+
 </head>
 
 <body>
@@ -15,7 +16,7 @@
 
         <div id="navbar">
 
-            <ul data-bind="foreach: skateList" class="allskatelinks" id="myskatelinks">
+            <ul data-bind="foreach: filteredSkates" class="allskatelinks" id="myskatelinks">
                 <li class="skatelink" data-bind="text: trailName, click: $parent.clickSkate"></li>
             </ul>
 
@@ -24,8 +25,11 @@
 
             <form class="filter-form">
                 <h4>Filter by:</h4> Maximum Miles:
-                <input type="text" name="maximum miles" data-bind="textInput: maxMiles" />&nbsp;&nbsp; Minimum Miles:
+                <input type="text" name="maximum miles" data-bind="textInput: maxMiles" />Minimum Miles:
                 <input type="text" name="minimum miles" data-bind="textInput: minMiles" />
+                Filter by Name:
+                <input type="text" data-bind="value: filter, valueUpdate: 'afterkeydown'"/>
+
             </form>
 
             <button class="filter-button" data-bind="click: filterResults">Filter</button>
@@ -61,7 +65,7 @@
     <script src="js/main.js"></script>
 
     <script src="js/jquery.min.js"></script>
-    <script async defer src="js/weatherapi.js"></script>
+    <script async defer src="js/weatherapi2.js"></script>
 
 </body>
 
