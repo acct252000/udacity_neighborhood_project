@@ -84,7 +84,7 @@ var self = this;
      
 this.skateList = ko.observableArray([]);
         this.minMiles = ko.observable(0);
-this.maxMiles = ko.observable(9999999);
+this.maxMiles = ko.observable(1000);
         this.formValidation = ko.observable('');
 weatherAttribString = ko.observable("Weather information provided by:");
 shouldShowLogo = ko.observable(true);
@@ -217,10 +217,12 @@ showNavBar: function() {
 var element = document.getElementById("navbar");
 element.style.display = 'flex';
 element.style.width='25%';
-var mainelement = document.getElementById('main');
-mainelement.style.width='75%';
-var arrowelement = document.getElementById('hidemenuarrow');
-arrowelement.style.display = 'flex';
+var mainElement = document.getElementById('main');
+mainElement.style.width='75%';
+var arrowElement = document.getElementById('hidemenuarrow');
+arrowElement.style.display = 'flex';
+var hamburgerElement = document.getElementById('hamburger');
+hamburgerElement.style.display = 'none';
 
 
 },
@@ -230,10 +232,12 @@ hideNavBar: function() {
 var element = document.getElementById("navbar");
   element.style.display = 'none';
   element.style.width='10%';
-  var mainelement = document.getElementById('main');
-  mainelement.style.width='90%';
-  var arrowelement = document.getElementById('hidemenuarrow');
-  arrowelement.style.display = 'none';
+  var mainElement = document.getElementById('main');
+  mainElement.style.width='90%';
+  var arrowElement = document.getElementById('hidemenuarrow');
+  arrowElement.style.display = 'none';
+  var hamburgerElement = document.getElementById('hamburger');
+  hamburgerElement.style.display = 'flex';
 
 
 },
@@ -245,6 +249,7 @@ var currentTemp;
 var currentWindMph;
 var currentWindDir;
 var currentRelativeHumidity;
+var skateLength;
 
 model.skates.forEach(function(skate){
 
@@ -253,17 +258,19 @@ currentTemp = skate.temperature;
 currentWindMph = skate.windMph;
 currentWindDir = skate.windDir;
 currentRelativeHumidity = skate.relHumid;
+skateLength = skate.length;
+
 }
 
 });
 
 var htmlWindowString = view.generateHtmlString(currentTemp, currentWindMph, currentWindDir, currentRelativeHumidity);
-
+console.log("htmlWS is " + htmlWindowString);
 
   if(infoWindow.marker != marker){
 infoWindow.marker = marker;
 //infoWindow.setContent('<h5>' + marker.title + '</h5>');
-infoWindow.setContent('<h5>' + marker.title + '</h5>' + htmlWindowString);
+infoWindow.setContent('<h5>' + marker.title + '</h5>' + htmlWindowString + 'Skate length is ' + skateLength + ' miles.</p>');
 infoWindow.open(map, marker);
 
 infoWindow.addListener('closeclick', function(){
@@ -302,7 +309,7 @@ if(currentRelativeHumidity) {
 currentRelativeHumidityString = 'Relative humidity is '+ currentRelativeHumidity+'<br>';
 }
 
-return htmlString.concat(currentTempString,currentWindMphString,currentWindDirString,currentRelativeHumidityString,'</p>');
+return htmlString.concat(currentTempString,currentWindMphString,currentWindDirString,currentRelativeHumidityString);
 
 
 }

@@ -30,17 +30,17 @@ Minimum Miles:
 <button class="filter-button" data-bind="click: filterResults">Filter</button>
 <button class="filter-button" data-bind="click: unFilterResults">Remove Filter</button>
 <div data-bind="text: formValidation"></div>
-<img id="hidemenuarrow" src="img/white_arrow.png" data-bind="click: hideMenu" alt="hide menu arrow">
+<img id="hidemenuarrow" src="img/closearrow.png" data-bind="click: hideMenu" alt="hide menu arrow">
 </div>
 
  <div id="main" class= "container"> 
 <header class="row">
-<img class="hamburger" src="img/hamburger_icon.png" alt="menu icon" data-bind="click: showMenu">
+<img id="hamburger" src="img/hamburger_icon.png" alt="menu icon" data-bind="click: showMenu">
 <div class="row-header main-title">Skating Trails in Dallas Area
 </div>
 <div class="wuattribution">
 <div data-bind="text: weatherAttribString"></div>
-<img id="wulogo" src="img/wundergroundlogo_4c.png" alt="Weather Underground Logo"> 
+<a href="http://www.wunderground.com"><img data-bind="visible: shouldShowLogo" id="wulogo" src="img/wundergroundlogo_4c.png" alt="Weather Underground Logo"> </a>
 </div>
 </header>
 

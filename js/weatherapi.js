@@ -1,8 +1,14 @@
+/*This file was created by Christine Stoner Udacity Student Septenber 19-20, 2016.  The purpose of this
+file is to load weather underground data asynchrously for the map of Dallas inline skates.*/
+
+
+//This function gets the information from weatherunderground including error handling.
+
 function loadData() {
 
 //This function sets a timeout to handle if the api call below does not return timely and updates the weather variables on the page accordingly.
 var weatherRequestTimeout = setTimeout(function(){
-   weatherAttribString.("No weather information avaiable");
+   weatherAttribString("No weather information available");
    shouldShowLogo(false);
 },8000);
 
@@ -19,20 +25,20 @@ dataType: "jsonp",
 success: function(response){
 var apiResponse = response.current_observation;
 
-
+//ensure response is in expected format
 if(apiResponse.temperature_string.slice(-1) == ')'){
 skate.temperature = apiResponse.temperature_string;
 skate.windMph = apiResponse.wind_mph;
 skate.windDir = apiResponse.wind_dir;
 skate.relHumid = apiResponse.relative_humidity;
 } else {
-weatherAttribString.("No weather information avaiable");
+weatherAttribString("No weather information available");
     shouldShowLogo(false);
 
 }
 
 
-
+//clear the timeout set above
 clearTimeout(weatherRequestTimeout);
 }
 });
@@ -49,5 +55,5 @@ clearTimeout(weatherRequestTimeout);
     return false;
 };
 
-
+//start the script
 loadData();
