@@ -109,6 +109,7 @@ var ViewModel = function() {
     this.minMiles = ko.observable(0);
     this.maxMiles = ko.observable(1000);
     this.filter = ko.observable('');
+    this.showNavBar = ko.observable(false);
     this.formValidation = ko.observable('');
     weatherAttribString = ko.observable("Weather information provided by:");
     shouldShowLogo = ko.observable(true);
@@ -158,34 +159,30 @@ var ViewModel = function() {
             self.skateList.push(skate);
         });
     };
-
+    //filter displayed skates bound to text filter input box
     self.filteredSkates = ko.computed(function() {
-    var filter = this.filter().toLowerCase();
-    if (!filter) {
-        return this.skateList();
-    } else {
-        return ko.utils.arrayFilter(this.skateList(), function(skate) {
-            return skate.trailName.toLowerCase().indexOf(filter) !== -1;
-            console.log("filter function called");
-        });
-    }
+        var filter = this.filter().toLowerCase();
+        if (!filter) {
+            return this.skateList();
+        } else {
+            return ko.utils.arrayFilter(this.skateList(), function(skate) {
+                return skate.trailName.toLowerCase().indexOf(filter) !== -1;
+            });
+        }
     }, self);
     //show navigation menu
     self.showMenu = function() {
-        view.showNavBar();
+        this.showNavBar(true);
     };
     //hide navigation menu
     self.hideMenu = function() {
-        view.hideNavBar();
+        this.showNavBar(false);
     };
 
 
 };
 
 var map;
-
-
-
 
 //set Timeout function to return error message if google is not available
 var mapsTimeout = setTimeout(function() {
@@ -244,36 +241,6 @@ var view = {
 
 
     },
-    //shows the NavBar, called when hamburger icon is clicked.
-    showNavBar: function() {
-
-        var element = document.getElementById("navbar");
-        element.style.display = 'flex';
-        element.style.width = '25%';
-        var mainElement = document.getElementById('main');
-        mainElement.style.width = '75%';
-        var arrowElement = document.getElementById('hidemenuarrow');
-        arrowElement.style.display = 'flex';
-        var hamburgerElement = document.getElementById('hamburger');
-        hamburgerElement.style.display = 'none';
-
-
-    },
-    //hides the NavBar, called when arrow on navbar is clicked
-    hideNavBar: function() {
-
-        var element = document.getElementById("navbar");
-        element.style.display = 'none';
-        element.style.width = '10%';
-        var mainElement = document.getElementById('main');
-        mainElement.style.width = '90%';
-        var arrowElement = document.getElementById('hidemenuarrow');
-        arrowElement.style.display = 'none';
-        var hamburgerElement = document.getElementById('hamburger');
-        hamburgerElement.style.display = 'flex';
-
-
-    },
     /*shows the infoWindow based on the passed in marker and infoWindow; called upoon click
     allows for closing the infoWindo when close button is clicked*/
     showInfoWindow: function(marker, infoWindow) {
@@ -299,12 +266,12 @@ var view = {
         });
 
         var htmlWindowString = view.generateHtmlString(currentTemp, currentWindMph, currentWindDir, currentRelativeHumidity);
-        console.log("htmlWS is " + htmlWindowString);
+
 
         if (infoWindow.marker != marker) {
             infoWindow.marker = marker;
             //infoWindow.setContent('<h5>' + marker.title + '</h5>');
-            infoWindow.setContent('<b>' + marker.title + '</b><br>Length: ' +  skateLength + 'miles<br>' + htmlWindowString);
+            infoWindow.setContent('<b>' + marker.title + '</b><br>Length: ' + skateLength + ' miles<br>' + htmlWindowString);
             infoWindow.open(map, marker);
 
             infoWindow.addListener('closeclick', function() {
@@ -330,7 +297,7 @@ var view = {
         var htmlString = '';
 
         if (currentTemp) {
-            currentTempString =  currentTemp + '<br>';
+            currentTempString = currentTemp + '<br>';
         }
         if (currentWindMph) {
             currentWindMphString = 'Wind ' + currentWindMph + ' MPH ';
@@ -339,7 +306,7 @@ var view = {
             currentWindDirString = currentWindDir + '<br>';
         }
         if (currentRelativeHumidity) {
-            currentRelativeHumidityString =  'Humidity: ' + currentRelativeHumidity + '<br>';
+            currentRelativeHumidityString = 'Humidity: ' + currentRelativeHumidity + '<br>';
         }
 
         return htmlString.concat(currentTempString, currentWindMphString, currentWindDirString, currentRelativeHumidityString);

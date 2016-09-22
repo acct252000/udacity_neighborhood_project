@@ -6,57 +6,49 @@
 
     <meta charset="UTF-8">
     <title>Dallas Area Skating Trails</title>
-    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0" />
 
 </head>
 
 <body>
 
-    <div class="navcontainer row">
+    <div id="navbar" data-bind="css: { open: showNavBar()}">
 
-        <div id="navbar">
+        <ul data-bind="foreach: filteredSkates" class="allskatelinks" id="myskatelinks">
+            <li class="skatelink" data-bind="text: trailName, click: $parent.clickSkate"></li>
+        </ul>
 
-            <ul data-bind="foreach: filteredSkates" class="allskatelinks" id="myskatelinks">
-                <li class="skatelink" data-bind="text: trailName, click: $parent.clickSkate"></li>
-            </ul>
+        <form class="filter-form">
+            <h4>Filter by:</h4> Maximum Miles:
+            <input type="text" name="maximum miles" data-bind="textInput: maxMiles" />Minimum Miles:
+            <input type="text" name="minimum miles" data-bind="textInput: minMiles" /> Filter by Name:
+            <input type="text" data-bind="value: filter, valueUpdate: 'afterkeydown'" />
 
+        </form>
 
+        <button class="filter-button" data-bind="click: filterResults">Miles Filter</button>
+        <button class="filter-button" data-bind="click: unFilterResults">Remove Miles Filter</button>
+        <div data-bind="text: formValidation"></div>
+        <img id="hidemenuarrow" src="img/closearrow.png" data-bind="click: hideMenu" alt="hide menu arrow">
+    </div>
 
+    <div id="main" class="container">
+        <header class="row">
+            <img id="hamburger" src="img/hamburger_icon.png" alt="menu icon" data-bind="click: showMenu">
+            <div class="row-header">Skating Trails in Dallas Area
+            </div>
+            <div class="wuattribution">
+                <div data-bind="text: weatherAttribString"></div>
+                <a href="http://www.wunderground.com"><img data-bind="visible: shouldShowLogo" id="wulogo" src="img/wundergroundlogo_4c.png" alt="Weather Underground Logo"> </a>
+            </div>
+        </header>
 
-            <form class="filter-form">
-                <h4>Filter by:</h4> Maximum Miles:
-                <input type="text" name="maximum miles" data-bind="textInput: maxMiles" />Minimum Miles:
-                <input type="text" name="minimum miles" data-bind="textInput: minMiles" />
-                Filter by Name:
-                <input type="text" data-bind="value: filter, valueUpdate: 'afterkeydown'"/>
+        <div id="map" class="row col-12"></div>
 
-            </form>
-
-            <button class="filter-button" data-bind="click: filterResults">Filter</button>
-            <button class="filter-button" data-bind="click: unFilterResults">Remove Filter</button>
-            <div data-bind="text: formValidation"></div>
-            <img id="hidemenuarrow" src="img/closearrow.png" data-bind="click: hideMenu" alt="hide menu arrow">
-        </div>
-
-        <div id="main" class="container">
-            <header class="row">
-                <img id="hamburger" src="img/hamburger_icon.png" alt="menu icon" data-bind="click: showMenu">
-                <div class="row-header main-title">Skating Trails in Dallas Area
-                </div>
-                <div class="wuattribution">
-                    <div data-bind="text: weatherAttribString"></div>
-                    <a href="http://www.wunderground.com"><img data-bind="visible: shouldShowLogo" id="wulogo" src="img/wundergroundlogo_4c.png" alt="Weather Underground Logo"> </a>
-                </div>
-            </header>
-
-            <div id="map" class="row col-12"></div>
-
-        </div>
     </div>
 
     <script>
     </script>
-
 
     <script defer async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkzEV_2vZYplUr-ceO0gt7F0q5y_k5eX8&v=3&callback=initMap">
     </script>
@@ -65,7 +57,7 @@
     <script src="js/main.js"></script>
 
     <script src="js/jquery.min.js"></script>
-    <script async defer src="js/weatherapi2.js"></script>
+    <script async defer src="js/weatherapi.js"></script>
 
 </body>
 

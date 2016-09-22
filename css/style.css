@@ -3,11 +3,10 @@
 }
 
 html {
-
     height: 100%;
 }
-body {
 
+body {
     height: 100%;
 }
 
@@ -48,33 +47,34 @@ h4 {
 }
 
 #navbar {
-    height: 100%;
     background-color: #7d97ad;
     padding: 15px;
-    font-size: 14px;
+    font-size: 10px;
     font-weight: bold;
     transition: 0.5s;
-    display: flex;
-    width: 10%;
-    flex-direction: column;
+    width: 150px;
+    position: absolute;
+    -webkit-transform: translate(-250px, 0);
+    transform: translate(-250px, 0);
     color: #fff;
+    transition: transform 0.3s ease;
+}
+
+#navbar.open {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+    z-index: 1;
 }
 
 #main {
     transition: margin-left .5s;
     padding: 20px;
     display: flex;
-    flex-direction: row;
-}
-
-.container {
-    padding-left: 15px;
-    padding-right: 15px;
-    display: flex;
     flex-wrap: wrap;
-    width: 90%;
+    width: 100%;
     align-content: space-between;
     flex-direction: row;
+    height: 100%;
 }
 
 .row-header {
@@ -82,9 +82,8 @@ h4 {
     color: #7d97ad;
     font-weight: bold;
     font-size: 200%;
-    margin-top: 18px;
-    margin-left: 8px;
-    margin-bottom: 13px;
+    width: 69%;
+    display: flex;
 }
 
 .row {
@@ -92,24 +91,16 @@ h4 {
     width: 100%;
 }
 
-.col-12, .col-6, .col-4 {
+.col-12 {
     position: relative;
     min-height: 1px;
     float: left;
-}
-
-.col-12 {
     width: 100%;
-}
-
-.main-title {
-    width: 69%;
-    display: flex;
 }
 
 #hamburger {
     width: 50px;
-    display: none;
+    display: flex;
     height: 50px;
 }
 
@@ -131,47 +122,32 @@ h4 {
 #hidemenuarrow {
     width: 35px;
     height: 35px;
-    display: none;
 }
 
-.navcontainer {
-    padding-left: 15px;
-    padding-right: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    align-content: space-between;
-    flex-direction: row;
-    height: 100%;
-}
-
-@media screen and (max-width: 1050px) {
-
+@media screen and (min-width: 600px) {
 
     #navbar {
-        padding: 7px;
-        font-size: 12px;
-        font-weight: normal;
+        position: relative;
+        transform: translate(0,0);
+        width: 200px;
+        font-size: 14px;
     }
-}
 
-@media screen and (max-width: 850px) {
+    #main {
+        display: flex;
+        width: auto;
+        flex-grow: 1;
+    }
 
-
-    #navbar {
-        display: none;
+    body {
+        display: flex;
     }
 
     #hamburger {
-        display: flex;
+        display: none;
+    }
+
+    #hidemenuarrow {
+        display: none;
     }
 }
-
-
-
-
-
-
-
-
-

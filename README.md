@@ -11,9 +11,15 @@ Open index.html in web browser. You can do this by putting the path to the file 
 
 ### How to Use
 
-This list can be filtered by minimum and maximum mileage by entering postive, numerical values in the fields indicated and clicking the filter button. The filter can be removed by clicking the "Remove Filter" button.  Clicking on a marker or list item will animate that skate's marker and show the info window.  The info window can be closed by clicking on the x in the info window box.
-The info window displays the skate title, skate mileage, and current temperature, wind mph and direction, and relative humidity when weather information is available.  The wind mph displayed is not 100% reliable, use at your own risk.  This was left in as we all know how important
-wind speed is, if available, to skaters!
+This list can be filtered by minimum and maximum mileage by entering postive, numerical values in the fields indicated and clicking the "Miles Filter" button. The miles filter can be removed by clicking the "Remove Miles Filter" button.
+
+This list can be filtered by text by typing in the text into the "Filter by Name" box.  The filter can be removed by removing the text from this box.
+
+Clicking on a marker or list item will animate that skate's marker and show the info window.  The info window can be closed by clicking on the x in the info window box.
+
+The info window displays the skate title, skate mileage, and current temperature, wind mph and direction, and relative humidity when weather information is available.  The wind mph displayed is not 100% reliable, use at your own risk.  This was left in as we all know how important wind speed is, if available, to skaters!
+
+The navigation bar, if not displayed, can be shown by clicking the hamburger icon.  If displayed on a small screen and the hide arrow at the bottom is available, this can be clicked to hide the navigation bar.
 
 
 ### Known Issues
@@ -29,11 +35,14 @@ The main structure of the supporting script and html of course is based on the f
 * [Intro to Ajax](https://www.udacity.com/course/intro-to-ajax--ud110)
 * [JavaScript Design Patterns](https://www.udacity.com/course/javascript-design-patterns--ud989)
 * [Google Maps APIs](https://www.udacity.com/course/google-maps-apis--ud864)
+* [Repsonsive Web Design Fundamentals](https://www.udacity.com/course/responsive-web-design-fundamentals--ud893)
 
 Help was also obtained from the following resources:
 
 * [Udacity form question](https://discussions.udacity.com/t/how-to-load-google-map-asynchronously/37094/8)
 * [StackOverflow answer on markers](http://stackoverflow.com/questions/22157001/update-reload-markers-without-reloading-google-map)
 * [StackOverflow answer on error handling](http://stackoverflow.com/questions/14687237/google-maps-api-async-loading)
+* [StackOverflow answer on filtering](http://stackoverflow.com/questions/17557789/using-contains-instead-of-stringstartswith-knockout-js)
+* [Knockmeout blog post on filtering](http://www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html)
 
 Peace, Skate, Love.
