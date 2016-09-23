@@ -103,7 +103,6 @@ var shouldShowLogo;
 var ViewModel = function() {
 
     var self = this;
-
     //establish observable array for list of skates and observables for other variables  
     this.skateList = ko.observableArray([]);
     this.minMiles = ko.observable(0);
@@ -159,15 +158,36 @@ var ViewModel = function() {
             self.skateList.push(skate);
         });
     };
+    //filter map markers and skates
+    self.textFilterSkates = function(element) {
+
+        var skateNames = [];
+        self.filteredSkates().forEach(function(skate) {
+            skateNames.push(skate.trailName);
+            console.log(skateNames);
+        });
+        model.skates.forEach(function(skate) {
+            if (skateNames.indexOf(skate.trailName) > -1) {
+                skate.marker.setMap(map);
+            } else {
+                skate.marker.setMap(null);
+            }
+
+        });
+
+    };
+
     //filter displayed skates bound to text filter input box
     self.filteredSkates = ko.computed(function() {
         var filter = this.filter().toLowerCase();
         if (!filter) {
             return this.skateList();
+
         } else {
             return ko.utils.arrayFilter(this.skateList(), function(skate) {
                 return skate.trailName.toLowerCase().indexOf(filter) !== -1;
             });
+
         }
     }, self);
     //show navigation menu

@@ -22,12 +22,13 @@
             <h4>Filter by:</h4> Maximum Miles:
             <input type="text" name="maximum miles" data-bind="textInput: maxMiles" />Minimum Miles:
             <input type="text" name="minimum miles" data-bind="textInput: minMiles" /> Filter by Name:
-            <input type="text" data-bind="value: filter, valueUpdate: 'afterkeydown'" />
+            <input type="text" data-bind="value: filter, valueUpdate: 'afterkeydown', event: {keyup: textFilterSkates}" />
 
         </form>
 
         <button class="filter-button" data-bind="click: filterResults">Miles Filter</button>
         <button class="filter-button" data-bind="click: unFilterResults">Remove Miles Filter</button>
+
         <div data-bind="text: formValidation"></div>
         <img id="hidemenuarrow" src="img/closearrow.png" data-bind="click: hideMenu" alt="hide menu arrow">
     </div>
