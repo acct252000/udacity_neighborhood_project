@@ -158,7 +158,7 @@ var ViewModel = function() {
             self.skateList.push(skate);
         });
     };
-    //filter map markers and skates
+    //filter map markers bound to text filter input box
     self.textFilterSkates = function(element) {
 
         var skateNames = [];
